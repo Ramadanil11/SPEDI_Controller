@@ -614,7 +614,7 @@ class _GridControlPageState extends State<GridControlPage> {
               } catch (_) {
                 // Lanjut logout meski ada error di server/service
               } finally {
-                // Logout: sign out Supabase + Google + clear ApiClient token
+                // Logout: sign out Firebase + Google + clear ApiClient token
                 await AuthService().logout();
                 if (mounted) {
                   Navigator.of(context).pushAndRemoveUntil(

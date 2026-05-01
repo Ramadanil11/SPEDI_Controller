@@ -148,7 +148,11 @@ class WebSocketService {
   }
 
   String _extractToken() {
-    return ApiClient.instance.accessToken!;
+    final token = ApiClient.instance.accessToken;
+    if (token == null || token.isEmpty) {
+      throw StateError('Access token is null — cannot connect WebSocket');
+    }
+    return token;
   }
 
   /// Refresh Firebase token agar WebSocket tidak 401.

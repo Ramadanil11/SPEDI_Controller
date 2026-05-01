@@ -108,7 +108,7 @@ class _ShipControllerPageState extends State<ShipControllerPage> {
     try {
       const deviceId = 'cfead5c1-4e4e-42da-af88-70620b8e3eac';
       final session = await _sessionService.openSession(deviceId);
-      print('[Session] OK: ${session.sessionId}');
+      debugPrint('[Session] OK: ${session.sessionId}');
       await _wsService.connect();
       _mqttDevice.startAsync();
     } on ApiException catch (e) {
@@ -285,7 +285,7 @@ class _ShipControllerPageState extends State<ShipControllerPage> {
               } catch (_) {
                 // Lanjut logout meski ada error di server/service
               } finally {
-                // Logout: sign out Supabase + Google + clear ApiClient token
+                // Logout: sign out Firebase + Google + clear ApiClient token
                 await AuthService().logout();
                 if (mounted) {
                   Navigator.of(context).pushReplacement(
